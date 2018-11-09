@@ -1,6 +1,6 @@
-if(isUserModule.toBoolean()){
+if (isUserModule.toBoolean()) {
     apply plugin: 'com.android.library'
-}else {
+} else {
     apply plugin: 'com.android.application'
 }
 
@@ -32,14 +32,14 @@ android {
             }
         }
     }
-    sourceSets{
-        main{
-            if (isUserModule.toBoolean()){
+    sourceSets {
+        main {
+            if (isUserModule.toBoolean()) {
                 manifest.srcFile 'src/main/release/AndroidManifest.xml'
-                java{
+                java {
                     exclude 'debug/**'
                 }
-            }else {
+            } else {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             }
         }
