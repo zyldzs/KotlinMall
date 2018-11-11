@@ -15,6 +15,10 @@ class RegisterActivity : BaseMvpActivity<RegisterPersenter>(),RegisterView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        mPersenter=RegisterPersenter()
+        mPersenter.mView=this
+
+
         mRegisterBtn.setOnClickListener{
             mPersenter.register("","")
         }
