@@ -1,15 +1,11 @@
 package com.kotlin.user.presenter
 
-import android.support.annotation.MainThread
-import android.util.Log
+import com.kotlin.base.ext.execute
 import com.kotlin.base.presenter.BasePresenter
-import com.kotlin.base.rx.BaseSubscriber
+import com.kotlin.base.rx.BaseObserver
 import com.kotlin.user.presenter.view.RegisterView
 import com.kotlin.user.service.impl.UserServiceImpl
-import io.reactivex.Observable
-import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 
 
@@ -25,16 +21,12 @@ class RegisterPersenter : BasePresenter<RegisterView>() {
         val userService = UserServiceImpl()
 
         userService.register(mobile, verifyCode, pwd)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(  // named arguments for lambda Subscribers
-                onNext = {
-                    Log.e("111111",Thread.currentThread().name)
-                    mView.onRegisterResult(it)
-                },
-                onError =  { it.printStackTrace() },
-                onComplete = { println("Done!") }
-        )
+                .execute(object :BaseObserver<Boolean>(){
+                    override fun onNext(t: Boolean) {
+                        super.onNext(t)
+                        mView.onRegisterResult(t)
+                    }
+                })
 
     }
 }
