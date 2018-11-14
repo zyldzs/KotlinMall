@@ -28,8 +28,6 @@ class RegisterActivity : BaseMvpActivity<RegisterPersenter>(),RegisterView {
 
     }
 
-
-
     override fun onRegisterResult(result: Boolean) {
         toast("成功")
     }
