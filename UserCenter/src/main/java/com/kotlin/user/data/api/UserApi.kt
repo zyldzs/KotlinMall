@@ -11,6 +11,7 @@ import retrofit2.http.POST
  * Created by zhaokun on 2018/11/13.
  */
 interface UserApi {
+
     @POST("userCenter/register")
     fun register(@Body req: RegisterReq):Observable<BaseResp<String>>
 }
