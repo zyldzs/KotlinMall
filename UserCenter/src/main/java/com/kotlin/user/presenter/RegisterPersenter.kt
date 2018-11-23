@@ -29,6 +29,7 @@ class RegisterPersenter : BasePresenter<RegisterView>() {
                         mView.onRegisterResult(t)
                     }
 
+
                     override fun onError(e: Throwable) {
                         super.onError(e)
                         Log.e("11111111","错误")
