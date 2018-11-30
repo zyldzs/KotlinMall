@@ -8,12 +8,13 @@ import com.kotlin.user.presenter.view.RegisterView
 import com.kotlin.user.service.impl.UserServiceImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 
 /**
  * Created by zhaokun on 2018/11/9.
  */
-class RegisterPersenter : BasePresenter<RegisterView>() {
+class RegisterPersenter @Inject constructor() : BasePresenter<RegisterView>() {
 
     fun register(mobile: String, verifyCode: String, pwd: String) {
         Log.e("11111","${mobile}${verifyCode}${pwd}")
@@ -32,10 +33,8 @@ class RegisterPersenter : BasePresenter<RegisterView>() {
 
                     override fun onError(e: Throwable) {
                         super.onError(e)
-                        Log.e("11111111","错误")
                     }
                 })
-
     }
 }
 

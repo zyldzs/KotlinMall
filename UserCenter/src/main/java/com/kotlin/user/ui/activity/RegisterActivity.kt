@@ -17,14 +17,12 @@ class RegisterActivity : BaseMvpActivity<RegisterPersenter>(),RegisterView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        mPersenter=RegisterPersenter()
         mPersenter.mView=this
 
 
         mRegisterBtn.setOnClickListener{
             mPersenter.register(mMobileEt.text.toString(),mVerifyCodeEt.text.toString(),mPwdEt.text.toString())
         }
-
     }
 
     override fun onRegisterResult(result: Boolean) {

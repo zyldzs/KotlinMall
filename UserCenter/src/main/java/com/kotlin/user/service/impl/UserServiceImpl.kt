@@ -6,12 +6,13 @@ import com.kotlin.user.data.Repository.UserRepository
 import com.kotlin.user.service.UserService
 import io.reactivex.Observable
 import io.reactivex.functions.Function
+import javax.inject.Inject
 
 
 /**
  * Created by zyldzs on 2018/11/11.
  */
-class UserServiceImpl:UserService {
+class UserServiceImpl @Inject constructor():UserService {
 
     override fun register(mobile: String, verifyCord: String, pwd: String): Observable<Boolean> {
         val repository=UserRepository()
