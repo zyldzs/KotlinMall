@@ -11,7 +11,7 @@ import javax.inject.Singleton
  * Created by zhaokun on 2018/12/6.
  */
 @ActivityScope
-@Component(dependencies = arrayOf(ActivityComponent::class),modules = arrayOf(ActivityModule::class))
+@Component(dependencies = arrayOf(AppComponent::class),modules = arrayOf(ActivityModule::class))
 interface ActivityComponent {
     fun context(): Context
 }
