@@ -14,8 +14,10 @@ import javax.inject.Inject
  */
 class UserServiceImpl @Inject constructor():UserService {
 
+    @Inject
+    lateinit var repository:UserRepository
     override fun register(mobile: String, verifyCord: String, pwd: String): Observable<Boolean> {
-        val repository=UserRepository()
+
         return  repository.register(mobile,pwd,verifyCord )
                 .flatMap(object : Function<BaseResp<String>, Observable<Boolean>>{
                     override fun apply(t: BaseResp<String>): Observable<Boolean> {
