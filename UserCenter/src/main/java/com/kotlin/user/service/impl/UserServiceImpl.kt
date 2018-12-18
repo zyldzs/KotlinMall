@@ -26,7 +26,6 @@ class UserServiceImpl @Inject constructor():UserService {
                         }
                         return Observable.just(true)
                     }
-
                 })
     }
 }

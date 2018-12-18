@@ -28,14 +28,15 @@ class RegisterPersenter @Inject constructor() : BasePresenter<RegisterView>() {
                 .execute(object :BaseObserver<Boolean>(){
                     override fun onNext(t: Boolean) {
                         super.onNext(t)
-                        mView.onRegisterResult(t)
+                        if (t)
+                        mView.onRegisterResult("成功")
                     }
 
 
                     override fun onError(e: Throwable) {
                         super.onError(e)
                     }
-                })
+                },lifecycleProvider)
     }
 }
 

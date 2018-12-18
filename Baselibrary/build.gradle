@@ -58,6 +58,17 @@ dependencies {
     //dagger
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    //lifecycle
+//    implementation "com.trello:rxlifecycle-kotlin:$rx_lifecycle_version"
+//    implementation "com.trello:rxlifecycle-components:$rx_lifecycle_version"
+    // 支持Kotlin语法的RxLifecycle基础库
+//    api "com.trello.rxlifecycle3:rxlifecycle:$rx_lifecycle_version"
+    api "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rx_lifecycle_version"
+    api "com.trello.rxlifecycle2:rxlifecycle-components:$rx_lifecycle_version"
+//    api "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:$rx_lifecycle_version"
+//    api "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle:$rx_lifecycle_version"
+
+
 }
 repositories {
     mavenCentral()
