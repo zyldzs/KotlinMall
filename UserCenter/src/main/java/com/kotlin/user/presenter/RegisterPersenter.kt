@@ -4,6 +4,7 @@ import android.util.Log
 import com.kotlin.base.ext.execute
 import com.kotlin.base.presenter.BasePresenter
 import com.kotlin.base.rx.BaseObserver
+import com.kotlin.base.utils.NetWorkUtils
 import com.kotlin.user.presenter.view.RegisterView
 import com.kotlin.user.service.UserService
 import com.kotlin.user.service.impl.UserServiceImpl
@@ -24,17 +25,17 @@ class RegisterPersenter @Inject constructor() : BasePresenter<RegisterView>() {
         /**
         业务逻辑
          */
+        if (!checkNetwork()){
+            print("没有网络连接")
+            return
+        }
+        mView.showLoading()
         userService.register(mobile, verifyCode, pwd)
-                .execute(object :BaseObserver<Boolean>(){
+                .execute(object :BaseObserver<Boolean>(mView){
                     override fun onNext(t: Boolean) {
                         super.onNext(t)
                         if (t)
                         mView.onRegisterResult("成功")
-                    }
-
-
-                    override fun onError(e: Throwable) {
-                        super.onError(e)
                     }
                 },lifecycleProvider)
     }

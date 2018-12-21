@@ -16,7 +16,8 @@ import javax.inject.Singleton
 @ActivityScope
 @Component(dependencies = arrayOf(AppComponent::class),modules = arrayOf(ActivityModule::class,LifecycleProviderModule::class))
 interface ActivityComponent {
-    fun Activity(): Activity
+    fun activity(): Activity
+    fun context():Context
     fun lifecycleProvider(): LifecycleProvider<*>
 
 }

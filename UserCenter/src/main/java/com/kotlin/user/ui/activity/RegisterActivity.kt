@@ -42,7 +42,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPersenter>(),RegisterView {
     override fun onBackPressed() {
         val  time=System.currentTimeMillis()
 
-        if (pressTime-time>2000){
+        if (time-pressTime>2000){
             toast("再按一次退出程序")
             pressTime = time
         }else{
