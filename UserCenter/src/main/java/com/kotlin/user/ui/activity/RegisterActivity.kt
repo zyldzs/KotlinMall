@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import com.kotlin.base.common.AppManager
 import com.kotlin.base.ui.activity.BaseMvpActivity
+import com.kotlin.base.widgets.VerifyButton
 import com.kotlin.user.R
 import com.kotlin.user.injection.Component.DaggerUserComponent
 import com.kotlin.user.injection.Component.UserComponent
@@ -14,12 +15,12 @@ import dagger.internal.DaggerCollections
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
+import java.util.*
 
 
 class RegisterActivity : BaseMvpActivity<RegisterPersenter>(),RegisterView {
 
     private var pressTime:Long=0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,13 @@ class RegisterActivity : BaseMvpActivity<RegisterPersenter>(),RegisterView {
         mRegisterBtn.setOnClickListener{
             mPersenter.register(mMobileEt.text.toString(),mVerifyCodeEt.text.toString(),mPwdEt.text.toString())
         }
+        mVerifyCodeBtn.setOnClickListener {
+            mVerifyCodeBtn.requestSendVerifyNumber()
+            toast("获取验证码")
+        }
+
     }
+
     override fun injectComponent() {
         DaggerUserComponent.builder().activityComponent(activityCompontent).userModule(UserModule()).build().inject(this)
         mPersenter.mView=this
@@ -37,7 +44,6 @@ class RegisterActivity : BaseMvpActivity<RegisterPersenter>(),RegisterView {
     override fun onRegisterResult(result: String) {
         toast(result)
     }
-
 
     override fun onBackPressed() {
         val  time=System.currentTimeMillis()

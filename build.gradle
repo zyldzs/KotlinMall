@@ -9,6 +9,7 @@ buildscript {
     ext.retrofit_version = '2.4.0'
     ext.dagger_version = '2.19'
     ext.rx_lifecycle_version = '2.+'
+    ext.glide_version='3.7.0'
 
     repositories {
         google()
